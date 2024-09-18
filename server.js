@@ -7,8 +7,13 @@ const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 8082;
 
+// https://tarak-nath-bar-portfolio.vercel.app/
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://tarak-nath-bar-portfolio.vercel.app',  // Allow only requests from your frontend URL
+  methods: ['GET', 'POST'],          // Allow specific HTTP methods
+  credentials: true                  // If using cookies or authorization headers
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
